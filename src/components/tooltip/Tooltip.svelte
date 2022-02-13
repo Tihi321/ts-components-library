@@ -3,12 +3,12 @@
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
   import { useAvoidElementCallback } from "tsl-utils";
-  import { ETooltipPlacement, ETooltipTrigger } from "../../constants";
+  import { tooltipPlacement, tooltipTrigger } from "../../constants";
   const slotName = "tooltip-slot";
 
   let visible: boolean = false;
-  export let trigger: ETooltipTrigger = ETooltipTrigger.Hover;
-  export let placement: ETooltipPlacement = ETooltipPlacement.Bottom;
+  export let trigger = tooltipTrigger.Hover;
+  export let placement = tooltipPlacement.Bottom;
   export let hideArrow: boolean = false;
 
   const { onEventCallback } = useAvoidElementCallback({
@@ -22,29 +22,29 @@
   });
 
   const onTriggerClick = () => {
-    if (trigger === ETooltipTrigger.Click) {
+    if (trigger === tooltipTrigger.Click) {
       visible = !visible;
     }
   };
   const onMouseEnter = () => {
-    if (trigger === ETooltipTrigger.Hover) {
+    if (trigger === tooltipTrigger.Hover) {
       visible = true;
     }
   };
   const onMouseLeave = () => {
-    if (trigger === ETooltipTrigger.Hover) {
+    if (trigger === tooltipTrigger.Hover) {
       visible = false;
     }
   };
 
   onMount(() => {
-    if (trigger === ETooltipTrigger.Click) {
+    if (trigger === tooltipTrigger.Click) {
       document.addEventListener("mousedown", onEventCallback);
     }
   });
 
   onDestroy(() => {
-    if (trigger === ETooltipTrigger.Click) {
+    if (trigger === tooltipTrigger.Click) {
       document.removeEventListener("click", onEventCallback);
     }
   });
@@ -62,20 +62,20 @@
   {#if visible}
     <div
       class="tooltip"
-      class:top={placement === ETooltipPlacement.Top}
-      class:bottom={placement === ETooltipPlacement.Bottom}
-      class:left={placement === ETooltipPlacement.Left}
-      class:right={placement === ETooltipPlacement.Right}
+      class:top={placement === tooltipPlacement.Top}
+      class:bottom={placement === tooltipPlacement.Bottom}
+      class:left={placement === tooltipPlacement.Left}
+      class:right={placement === tooltipPlacement.Right}
       class:hide-arrow={hideArrow}
     >
       <slot name="tooltip" />
       {#if !hideArrow}
         <div
           class="arrow-container"
-          class:top={placement === ETooltipPlacement.Top}
-          class:bottom={placement === ETooltipPlacement.Bottom}
-          class:left={placement === ETooltipPlacement.Left}
-          class:right={placement === ETooltipPlacement.Right}
+          class:top={placement === tooltipPlacement.Top}
+          class:bottom={placement === tooltipPlacement.Bottom}
+          class:left={placement === tooltipPlacement.Left}
+          class:right={placement === tooltipPlacement.Right}
         >
           <svg
             class="arrow-icon"

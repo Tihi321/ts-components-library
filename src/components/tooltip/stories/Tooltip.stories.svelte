@@ -1,7 +1,7 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import Tooltip from "../Tooltip.svelte";
-  import { ETooltipPlacement, ETooltipTrigger } from "../../../constants";
+  import { tooltipPlacement, tooltipTrigger } from "../../../constants";
 </script>
 
 <!-- More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export -->
@@ -16,13 +16,13 @@
     },
     hideArrow: { defaultValue: false, control: "boolean" },
     placement: {
-      defaultValue: ETooltipPlacement.Top,
-      options: Object.values(ETooltipPlacement),
+      defaultValue: tooltipPlacement.Top,
+      options: Object.values(tooltipPlacement),
       control: { type: "radio" },
     },
     trigger: {
-      defaultValue: ETooltipTrigger.Hover,
-      options: Object.values(ETooltipTrigger),
+      defaultValue: tooltipTrigger.Hover,
+      options: Object.values(tooltipTrigger),
       control: { type: "radio" },
     },
   }}
