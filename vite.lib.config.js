@@ -1,19 +1,18 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import fs from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   build:{
     lib:{
-      entry: './src/index.ts',
+      entry: './src/web-components.ts',
       name: 'ts-components',
-      formats: ['es', 'umd'],
-      fileName: (format) => `${format}/ts-components.js`
+      formats: ['umd'],
+      fileName: () => `index.js`
     },
     rollupOptions: {
       output: {
-        dir: "lib",
+        dir: "cdn",
         compact: true,
       },
       manualChunks: () => 'everything.js',

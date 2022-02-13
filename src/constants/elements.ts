@@ -1,11 +1,11 @@
 export enum ETooltipPlacement {
-  Top = 'Top',
-  Bottom = 'Bottom',
-  Left = 'Left',
-  Right = 'Right',
+  Top = "Top",
+  Bottom = "Bottom",
+  Left = "Left",
+  Right = "Right",
 }
 
 export enum ETooltipTrigger {
-  Click = 'Click',
-  Hover = 'Hover',
+  Click = "Click",
+  Hover = "Hover",
 }

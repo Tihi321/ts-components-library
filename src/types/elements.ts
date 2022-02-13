@@ -1,7 +1,7 @@
 export interface IIsSlotPresent {
   datasetName: string;
   slotName: string;
-  elements?: Element[]
+  elements?: Element[];
 }
 
 export type TDropdownItem = {

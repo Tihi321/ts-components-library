@@ -1,17 +1,18 @@
 {
   "version": "1.0.0",
   "license": "BSD-3-Clause",
-  "main": "lib/umd/ts-components.js",
-  "module": "lib/esm/ts-components.js",
+  "svelte": "src/index.ts",
+  "main": "cdn/index.js",
   "files": [
-    "lib/umd",
-    "lib/esm"
+    "cdn"
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build -c=vite.lib.config.js",
+    "build:lib": "vite build -c=vite.lib.config.js",
+    "build": "yarn build:lib",
     "serve": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
+    "lint": "eslint ./src --ext .ts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook  -o ./docs",
     "deploy": "yarn build && yarn build-storybook"
@@ -28,6 +29,14 @@
     "@tsconfig/svelte": "^3.0.0",
     "babel-loader": "^8.2.3",
     "eslint": "^7.20.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
     "node-sass": "^7.0.1",
