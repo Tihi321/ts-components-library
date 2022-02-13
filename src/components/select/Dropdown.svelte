@@ -1,19 +1,18 @@
-<svelte:options tag="ts-dropdown" />
+<svelte:options tag={null} />
 
 <script lang="ts">
   import { onDestroy, onMount, createEventDispatcher } from "svelte";
   import { dispatchEvent, useAvoidElementCallback } from "tsl-utils";
-  import { get_current_component } from "svelte/internal";
   import type { TDropdownItems, TDropdownItem } from "../../types";
 
-  const component = get_current_component();
   const svelteDispatch = createEventDispatcher();
-
-  const slotName = "dropdown-slot";
 
   export let open: boolean = false;
   export let selected: TDropdownItem = undefined;
   export let items: TDropdownItems = [];
+
+  const slotName = "dropdown-slot";
+  let component;
 
   const { onEventCallback } = useAvoidElementCallback({
     datasetName: "dropdown",
@@ -51,7 +50,7 @@
   });
 </script>
 
-<div class="container" class:open data-dropdown={slotName}>
+<div class="container" class:open data-dropdown={slotName} bind:this={component}>
   <div class="title" on:click={onOpen}>
     <div class="selected">
       {#if selected}

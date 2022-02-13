@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ... -->
+  <head>
+    <script src="/cdn/index.js"></script>
+  </head>
   <body>
     <ts-toggle class="test" value></ts-toggle>
-    <script type="module" src="/src/web-components"></script>
     <script>
       const testElements = document.querySelector(".test");
       testElements.addEventListener("change", value => {

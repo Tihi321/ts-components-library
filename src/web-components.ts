@@ -1,27 +1,18 @@
+export * from "./index";
+
 import { domReady } from "tsl-utils";
 
+import { LIBRARY_NAME, LIBRARY_PREFIX } from "./constants/library";
+
 domReady(() => {
-  // -------------------------------------------------------------
-  // Accordion
-  if (document.querySelector("ts-accodrion")) {
-    import("./components/accordion/Accordion.svelte");
-  }
+  if (window && window[LIBRARY_NAME]) {
+    const componentns = window[LIBRARY_NAME] || {};
 
-  // -------------------------------------------------------------
-  // Toggle
-  if (document.querySelector("ts-toggle")) {
-    import("./components/buttons/Toggle.svelte");
-  }
+    Object.keys(componentns).map((key) => {
+      const name = key.toLowerCase();
+      const component = componentns[key];
 
-  // -------------------------------------------------------------
-  // Dropdown
-  if (document.querySelector("ts-dropdown")) {
-    import("./components/select/Dropdown.svelte");
-  }
-
-  // -------------------------------------------------------------
-  // Tooltip
-  if (document.querySelector("ts-tooltip")) {
-    import("./components/tooltip/Tooltip.svelte");
+      customElements.define(`${LIBRARY_PREFIX}-${name}`, component);
+    });
   }
 });

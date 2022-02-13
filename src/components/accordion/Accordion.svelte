@@ -1,4 +1,4 @@
-<svelte:options tag="ts-accodrion" />
+<svelte:options tag={null} />
 
 <script lang="ts">
   export let open: boolean = false;

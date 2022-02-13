@@ -1,4 +1,4 @@
-<svelte:options tag="ts-tooltip" />
+<svelte:options tag={null} />
 
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";

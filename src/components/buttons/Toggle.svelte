@@ -1,13 +1,14 @@
-<svelte:options tag="ts-toggle" />
+<svelte:options tag={null} />
 
 <script lang="ts">
   import { dispatchEvent } from "tsl-utils";
   import { createEventDispatcher } from "svelte";
-  import { get_current_component } from "svelte/internal";
 
   export let controlled: boolean = false;
   export let value: boolean = false;
-  const component = get_current_component();
+
+  let component;
+
   const svelteDispatch = createEventDispatcher();
 
   const onChange = () => {
@@ -25,7 +26,7 @@
   };
 </script>
 
-<div class="container" on:click={onChange}>
+<div class="container" on:click={onChange} bind:this={component}>
   <div class="toggle-line" />
   <div class="toggle-button" class:toggled={value} />
 </div>

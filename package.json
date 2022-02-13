@@ -1,5 +1,6 @@
 {
   "version": "1.0.0",
+  "name": "ts-components",
   "license": "BSD-3-Clause",
   "svelte": "src/index.ts",
   "main": "cdn/index.js",
