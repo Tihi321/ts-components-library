@@ -31,7 +31,11 @@
       }}
       {checked}
       {...args}
-    />
+    >
+      <span slot="label">
+        {args.label}
+      </span>
+    </Checkbox>
   </div>
 </Template>
 

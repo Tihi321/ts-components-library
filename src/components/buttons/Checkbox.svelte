@@ -5,7 +5,6 @@
   import { createEventDispatcher } from "svelte";
 
   export let controlled: boolean = false;
-  export let label: string;
   export let reverse: boolean = false;
   export let disabled: boolean = false;
   export let checked: boolean = false;
@@ -52,8 +51,10 @@
     on:change={(event) => event.stopPropagation()}
   />
   <span class="checkmark" />
-  {#if label}
-    <div class="label" class:reversed={reverseString}>{label}</div>
+  {#if $$slots.label}
+    <div class="label" class:reversed={reverseString}>
+      <slot name="label" />
+    </div>
   {/if}
 </div>
 

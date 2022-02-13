@@ -6,6 +6,12 @@
       :root {
         --ts-accordion-content-bg-color: white;
       }
+
+      .element-wrapper {
+        padding: 20px 10px;
+        border: 2px solid #000000;
+        margin-bottom: 50px;
+      }
       .tooltip-container {
         width: 150px;
       }
@@ -16,19 +22,35 @@
     </style>
   </head>
   <body>
-    <ts-accordion open="true">
-      <slot slot="title">This is accordion</slot>
-    <ts-toggle class="toggle" value="true"></ts-toggle>
-    <div class="tooltip-container">
-      <ts-tooltip class="tooltip" trigger="Hover" placement="Top">
-        <slot slot="tooltip">This is tooltip</slot>
-        <button class="tooltip-button">Button</button>
-      </ts-tooltip>
+    <div class="element-wrapper">
+      <ts-toggle class="toggle" value="true"></ts-toggle>
     </div>
-  </ts-accordion>
+    <div class="element-wrapper">
+      <ts-checkbox class="toggle" checked="true">
+        <slot slot="label">Label</slot>
+      </ts-checkbox>
+    </div>
+    <div class="element-wrapper">
+      <div class="tooltip-container">
+        <ts-tooltip class="tooltip" trigger="Hover" placement="Top">
+          <slot slot="tooltip">This is tooltip</slot>
+          <button class="tooltip-button">Button</button>
+        </ts-tooltip>
+      </div>
+    </div>
   
-    <div class="select-container">
-      <ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>
+
+    <div class="element-wrapper">
+      <div class="select-container">
+        <ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>
+      </div>
+    </div>
+
+    <div class="element-wrapper">
+      <ts-accordion open="true">
+        <slot slot="title">This is accordion</slot>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim vero quibusdam itaque. Temporibus est aut debitis eligendi, doloribus dolores voluptates laudantium labore unde numquam pariatur exercitationem esse, nihil possimus?
+      </ts-accordion>
     </div>
     <script>
       const toggleElement = document.querySelector(".toggle");
