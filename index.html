@@ -2,14 +2,46 @@
 <html lang="en">
   <head>
     <script src="/cdn/index.js"></script>
+    <style>
+      :root {
+        --ts-accordion-content-bg-color: white;
+      }
+      .tooltip-container {
+        width: 150px;
+      }
+
+      .tooltip-button {
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <ts-toggle class="test" value></ts-toggle>
+    <ts-accordion open="true">
+      <slot slot="title">This is accordion</slot>
+    <ts-toggle class="toggle" value="true"></ts-toggle>
+    <div class="tooltip-container">
+      <ts-tooltip class="tooltip" trigger="Hover" placement="Top">
+        <slot slot="tooltip">This is tooltip</slot>
+        <button class="tooltip-button">Button</button>
+      </ts-tooltip>
+    </div>
+  </ts-accordion>
+  
+    <div class="select-container">
+      <ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>
+    </div>
     <script>
-      const testElements = document.querySelector(".test");
-      testElements.addEventListener("change", value => {
+      const toggleElement = document.querySelector(".toggle");
+      toggleElement.addEventListener("change", value => {
         console.log(value);
       });
+
+      const dropdownElement = document.querySelector(".dropdown");
+      dropdownElement.addEventListener("change", value => {
+        console.log(value);
+        dropdownElement.selected = value.detail;
+      });
+  
     </script>
   </body>
 </html>

@@ -11,6 +11,9 @@
   export let selected: TDropdownItem = undefined;
   export let items: TDropdownItems = [];
 
+  $: itemsArray = typeof items === "string" ? JSON.parse(items) : items;
+  $: selectedbject = typeof selected === "string" ? JSON.parse(selected) : selected;
+
   const slotName = "dropdown-slot";
   let component;
 
@@ -29,7 +32,7 @@
   };
 
   const onChange = (item: TDropdownItem) => {
-    if (!selected || selected.id !== item.id) {
+    if (!selectedbject || selectedbject.id !== item.id) {
       svelteDispatch("change", item);
       dispatchEvent({
         name: "change",
@@ -53,8 +56,8 @@
 <div class="container" class:open data-dropdown={slotName} bind:this={component}>
   <div class="title" on:click={onOpen}>
     <div class="selected">
-      {#if selected}
-        {selected.value}
+      {#if selectedbject}
+        {selectedbject.value}
       {:else}
         -
       {/if}
@@ -78,7 +81,7 @@
   </div>
   {#if open}
     <ul class="items">
-      {#each items as item}
+      {#each itemsArray as item}
         <li class="item" on:click={() => onChange(item)}>
           {item.value}
         </li>
