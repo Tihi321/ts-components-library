@@ -94,10 +94,10 @@
   @import "src/styles/all";
   .container {
     position: relative;
-    color: $select-color;
-    background-color: $select-bg-color;
+    color: var(--ts-select-color, rgba(35, 39, 57, 1));
+    background-color: var(--ts-select-bg-color, rgba(255, 255, 255, 1));
     width: 100%;
-    border: 1px solid $select-border-color;
+    border: 1px solid var(--ts-select-border-color, rgba(35, 39, 57, 1));
     border-radius: 5px;
 
     &.open {
@@ -131,7 +131,7 @@
       height: 100%;
     }
     .arrow-icon-path {
-      fill: $select-icon-color;
+      fill: var(--ts-select-icon-color, rgba(35, 39, 57, 1));
     }
   }
 
@@ -148,7 +148,7 @@
     flex-direction: column;
     background-color: inherit;
     border-radius: inherit;
-    border: 1px solid $select-border-color;
+    border: 1px solid var(--ts-select-border-color, rgba(35, 39, 57, 1));
   }
 
   .item {
@@ -159,7 +159,7 @@
     text-align: left;
 
     &:hover {
-      background-color: $select-hover-color;
+      background-color: var(--ts-select-hover-color, rgba(3, 169, 244, 1));
     }
   }
 </style>

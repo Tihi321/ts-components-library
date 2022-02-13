@@ -44,7 +44,7 @@
 
   .container {
     overflow: hidden;
-    color: $accordion-color;
+    color: var(--ts-accordion-color, rgba(255, 255, 255, 1));
   }
 
   .header {
@@ -52,8 +52,11 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-bottom: 2px solid $accordion-border-color;
-    background: $accordion-bg-color;
+    border-bottom: 2px solid var(--ts-accordion-border-color, rgba(35, 39, 57, 1));
+    background: var(
+      --ts-accordion-bg-glass-color,
+      linear-gradient(135deg, rgba(37, 141, 200, 1) 0%, rgba(37, 141, 200, 1) 100%)
+    );
   }
 
   .title {
@@ -68,8 +71,8 @@
     opacity: 0;
     max-height: 0;
     transition: all 0.3s ease;
-    background-color: $accordion-content-bg-color;
-    color: $accordion-content-color;
+    background-color: var(--ts-accordion-content-bg-color, rgba(35, 39, 57, 1));
+    color: var(--ts-accordion-content-primary-color, rgba(35, 39, 57, 1));
 
     &.open {
       padding: 8px 36px;
@@ -91,7 +94,7 @@
     }
 
     .arrow-icon-path {
-      fill: $accordion-icon-color;
+      fill: var(--ts-accordion-icon-color, rgba(255, 255, 255, 1));
     }
   }
 </style>

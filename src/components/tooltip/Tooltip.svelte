@@ -113,9 +113,9 @@
     left: initial;
     right: initial;
     bottom: initial;
-    background-color: $tooltip-bg-color;
-    color: $tooltip-color;
-    filter: drop-shadow(0 0 2px $tooltip-filter-color);
+    background-color: var(--ts-tooltip-bg-color, rgba(255, 255, 255, 1));
+    color: var(--ts-tooltip-color, rgba(35, 39, 57, 1));
+    filter: drop-shadow(0 0 2px var(--ts-tooltip-filter-color, rgba(192, 192, 192, 1)));
     border-radius: 3px;
     opacity: 0.9;
     font-size: 12px;
@@ -200,7 +200,7 @@
       height: 100%;
     }
     .arrow-icon-path {
-      fill: $tooltip-bg-color;
+      fill: var(--ts-tooltip-bg-color, rgba(255, 255, 255, 1));
     }
   }
 </style>
