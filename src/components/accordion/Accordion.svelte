@@ -3,15 +3,17 @@
 <script lang="ts">
   export let open: boolean = false;
 
+  $: openString = typeof open === "string" ? open === "true" : open;
+
   const onClick = () => {
-    open = !open;
+    open = !openString;
   };
 </script>
 
 <div class="container">
   <div class="header" on:click={onClick}>
     <div class="icon-container">
-      <div class="icon" class:open>
+      <div class="icon" class:open={openString}>
         <svg
           width="12"
           height="7"
@@ -34,7 +36,7 @@
       <slot name="title" />
     </div>
   </div>
-  <div class="content" class:open>
+  <div class="content" class:open={openString}>
     <slot />
   </div>
 </div>

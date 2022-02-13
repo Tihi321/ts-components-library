@@ -7,20 +7,22 @@
   export let controlled: boolean = false;
   export let value: boolean = false;
 
+  $: valueString = typeof value === "string" ? value === "true" : value;
+
   let component;
 
   const svelteDispatch = createEventDispatcher();
 
   const onChange = () => {
     if (!controlled) {
-      value = !value;
+      value = !valueString;
     }
     svelteDispatch("change", {
-      value: !value,
+      value: !valueString,
     });
     dispatchEvent({
       name: "change",
-      params: !value,
+      params: !valueString,
       element: component,
     });
   };
@@ -28,7 +30,7 @@
 
 <div class="container" on:click={onChange} bind:this={component}>
   <div class="toggle-line" />
-  <div class="toggle-button" class:toggled={value} />
+  <div class="toggle-button" class:toggled={valueString} />
 </div>
 
 <style lang="scss">
