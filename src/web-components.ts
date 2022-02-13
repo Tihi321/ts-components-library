@@ -12,7 +12,9 @@ domReady(() => {
       const name = key.toLowerCase();
       const component = componentns[key];
 
-      customElements.define(`${LIBRARY_PREFIX}-${name}`, component);
+      if (typeof component === "function") {
+        customElements.define(`${LIBRARY_PREFIX}-${name}`, component);
+      }
     });
   }
 });
