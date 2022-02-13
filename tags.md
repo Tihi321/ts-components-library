@@ -17,7 +17,7 @@ git tag
 Then create a new version for that commit with command, example for version 2.2.3
 
 ```bash
-git tag -a 2.2.3 -m "Fix dropdown item and expose container"
+git tag -a 2.2.3 -m "title"
 ```
 
 Whith this you have created version locally, and you just have to push it to repositry with
