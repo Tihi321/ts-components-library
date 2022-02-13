@@ -2,9 +2,8 @@
 
 <script lang="ts">
   import { onDestroy, onMount, createEventDispatcher } from "svelte";
-  import { dispatchEvent } from "tsl-utils";
+  import { dispatchEvent, useAvoidElementCallback } from "tsl-utils";
   import { get_current_component } from "svelte/internal";
-  import { useAvoidElementCallback } from "../../hooks";
   import type { TDropdownItems, TDropdownItem } from "../../types";
 
   const component = get_current_component();

@@ -51,7 +51,7 @@
     "vite": "^2.7.13"
   },
   "dependencies": {
-    "tsl-utils": "^1.0.30"
+    "tsl-utils": "^1.0.32"
   },
   "husky": {
     "hooks": {

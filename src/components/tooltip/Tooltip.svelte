@@ -2,7 +2,7 @@
 
 <script lang="ts">
   import { onDestroy, onMount } from "svelte";
-  import { useAvoidElementCallback } from "../../hooks";
+  import { useAvoidElementCallback } from "tsl-utils";
   import { ETooltipPlacement, ETooltipTrigger } from "../../constants";
   const slotName = "tooltip-slot";
 
