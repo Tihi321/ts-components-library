@@ -1,0 +1,22 @@
+$toggle-color: var(--ts-toggle-color, rgba(3, 169, 244, 1));
+$toggle-on-color: var(--ts-toggle-on-color, rgba(35, 39, 57, 1));
+
+$accordion-color: var(--ts-accordion-color, rgba(255, 255, 255, 1));
+$accordion-icon-color: var(--ts-accordion-icon-color, rgba(255, 255, 255, 1));
+$accordion-bg-color: var(
+  --ts-accordion-bg-glass-color,
+  linear-gradient(135deg, rgba(37, 141, 200, 1) 0%, rgba(37, 141, 200, 1) 100%)
+);
+$accordion-content-bg-color: var(--ts-accordion-content-bg-color, rgba(35, 39, 57, 1));
+$accordion-content-color: var(--ts-accordion-content-primary-color, rgba(35, 39, 57, 1));
+$accordion-border-color: var(--ts-accordion-border-color, rgba(35, 39, 57, 1));
+
+$select-color: var(--ts-select-color, rgba(35, 39, 57, 1));
+$select-icon-color: var(--ts-select-icon-color, rgba(35, 39, 57, 1));
+$select-bg-color: var(--ts-select-bg-color, rgba(255, 255, 255, 1));
+$select-hover-color: var(--ts-select-hover-color, rgba(3, 169, 244, 1));
+$select-border-color: var(--ts-select-border-color, rgba(35, 39, 57, 1));
+
+$tooltip-color: var(--ts-tooltip-color, rgba(35, 39, 57, 1));
+$tooltip-bg-color: var(--ts-tooltip-bg-color, rgba(255, 255, 255, 1));
+$tooltip-filter-color: var(--ts-tooltip-filter-color, rgba(192, 192, 192, 1));
