@@ -1,15 +1,26 @@
 <svelte:options tag="ts-toggle" />
 
 <script lang="ts">
+  import { dispatchEvent } from "tsl-utils";
   import { createEventDispatcher } from "svelte";
+  import { get_current_component } from "svelte/internal";
 
-  const dispatch = createEventDispatcher();
-
+  export let controlled: boolean = false;
   export let value: boolean = false;
+  const component = get_current_component();
+  const svelteDispatch = createEventDispatcher();
 
   const onChange = () => {
-    dispatch("change", {
+    if (!controlled) {
+      value = !value;
+    }
+    svelteDispatch("change", {
       value: !value,
+    });
+    dispatchEvent({
+      name: "change",
+      params: !value,
+      element: component,
     });
   };
 </script>

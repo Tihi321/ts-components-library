@@ -2,7 +2,13 @@
 <html lang="en">
 <!-- ... -->
   <body>
-    <ts-toggle value></ts-toggle>
+    <ts-toggle class="test" value></ts-toggle>
     <script type="module" src="/src/index.ts"></script>
+    <script>
+      const testElements = document.querySelector(".test");
+      testElements.addEventListener("change", value => {
+        console.log(value);
+      });
+    </script>
   </body>
 </html>

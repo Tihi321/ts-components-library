@@ -42,7 +42,7 @@
     "vite": "^2.7.13"
   },
   "dependencies": {
-    "tsl-utils": "^1.0.28"
+    "tsl-utils": "^1.0.30"
   },
   "husky": {
     "hooks": {

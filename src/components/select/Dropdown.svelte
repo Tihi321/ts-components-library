@@ -1,12 +1,15 @@
 <svelte:options tag="ts-dropdown" />
 
 <script lang="ts">
-  import { onDestroy, onMount } from "svelte";
-  import { createEventDispatcher } from "svelte";
+  import { onDestroy, onMount, createEventDispatcher } from "svelte";
+  import { dispatchEvent } from "tsl-utils";
+  import { get_current_component } from "svelte/internal";
   import { useAvoidElementCallback } from "../../hooks";
   import type { TDropdownItems, TDropdownItem } from "../../types";
 
-  const dispatch = createEventDispatcher();
+  const component = get_current_component();
+  const svelteDispatch = createEventDispatcher();
+
   const slotName = "dropdown-slot";
 
   export let open: boolean = false;
@@ -29,7 +32,12 @@
 
   const onChange = (item: TDropdownItem) => {
     if (!selected || selected.id !== item.id) {
-      dispatch("change", item);
+      svelteDispatch("change", item);
+      dispatchEvent({
+        name: "change",
+        params: item,
+        element: component,
+      });
     }
 
     open = false;

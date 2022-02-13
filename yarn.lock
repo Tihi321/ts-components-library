@@ -10306,10 +10306,10 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tsl-utils@^1.0.28:
-  version "1.0.29"
-  resolved "https://registry.yarnpkg.com/tsl-utils/-/tsl-utils-1.0.29.tgz#6c1414d94237d8ec9508c103da1e3a2e5a9e9dba"
-  integrity sha512-rp3yGgA6wu/T4pqkqX+IwbN4f4oALHfxf/TPiNXjjjSmiqmiozQtcd4cgmboM2brtwAVOVWK85ZLGkX7bt4Ljw==
+tsl-utils@^1.0.30:
+  version "1.0.30"
+  resolved "https://registry.yarnpkg.com/tsl-utils/-/tsl-utils-1.0.30.tgz#04397e65e8b6b2c68e43da80bb208955d83aa197"
+  integrity sha512-BABoVMP+Hom5rdxROuAXx0yJvCgUmS6jslRu1WNRY8QNcpNvB1Xqh9lYog/oybrFCj7IvDW8uzmOQR4OmaCjEg==
   dependencies:
     "@types/web" "^0.0.50"
     lodash "^4.17.21"
