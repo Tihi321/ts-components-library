@@ -52,6 +52,11 @@ or use it directly within script tag, atributes can be passed from html as strin
     _Element_<br/>
     **`<ts-tooltip class="tooltip" trigger="Hover" placement="Top"><slot slot="tooltip">Tooltip content</slot>Content</ts-tooltip>`**
 
+6.  **Input** - Custom input wit posibility to style arrow buttons with number input and adding suffix
+
+    _Element_<br/>
+    **`<ts-input value="10" type="number" suffix="&#8451;" ></ts-input>`**
+
 Dependecies
 
 - [TSL Utils](https://www.npmjs.com/package/tsl-utils)
