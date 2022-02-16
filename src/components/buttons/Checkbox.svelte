@@ -9,17 +9,13 @@
   export let disabled: boolean = false;
   export let checked: boolean = false;
 
-  $: controlledString = typeof controlled === "string" ? controlled === "true" : controlled;
-  $: checkedString = typeof checked === "string" ? checked === "true" : checked;
-  $: reverseString = typeof reverse === "string" ? reverse === "true" : reverse;
-  $: disabledString = typeof disabled === "string" ? disabled === "true" : disabled;
+  const getBooleanFromString = (valueString: string | boolean) =>
+    typeof valueString === "string" ? valueString === "true" : valueString;
 
-  $: {
-    console.log("controlledString", controlledString);
-    console.log("disabledString", disabledString);
-    console.log("reverseString", reverseString);
-    console.log("checkedString", checkedString);
-  }
+  $: controlledString = getBooleanFromString(controlled);
+  $: disabledString = getBooleanFromString(disabled);
+  $: checkedString = getBooleanFromString(checked);
+  $: reverseString = getBooleanFromString(reverse);
 
   let component;
 
