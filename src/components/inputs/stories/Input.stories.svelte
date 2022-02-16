@@ -33,6 +33,8 @@
   name="Number"
   args={{
     value: 10,
+    max: 20,
+    min: 5,
     type: "number",
     suffix: "°C",
   }}
@@ -42,8 +44,9 @@
   @import "src/styles/all";
 
   .container {
-    display: inline-block;
-    margin: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
 
     color: #ffffff;
   }

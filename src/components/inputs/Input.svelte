@@ -10,6 +10,8 @@
   export let step: string | number = 1;
   export let controlled: boolean | string = false;
   export let disabled: boolean | string = false;
+  export let min: string | number = "infinity";
+  export let max: string | number = "infinity";
 
   const getBooleanFromString = (valueString: string | boolean) =>
     typeof valueString === "string" ? valueString === "true" : valueString;
@@ -49,7 +51,9 @@
 
     const returnNumber = inputValue + stepNumber;
 
-    onChange(returnNumber);
+    if (max && Number(max) !== NaN && returnNumber <= Number(max)) {
+      onChange(returnNumber);
+    }
   };
 
   const onDownNumberClick = () => {
@@ -57,7 +61,9 @@
 
     const returnNumber = inputValue - stepNumber;
 
-    onChange(returnNumber);
+    if (min && Number(min) !== NaN && returnNumber >= Number(min)) {
+      onChange(returnNumber);
+    }
   };
 </script>
 
@@ -71,6 +77,8 @@
   <input
     bind:this={input}
     {type}
+    {min}
+    {max}
     {step}
     {value}
     disabled={disabledString}
@@ -122,8 +130,9 @@
 <style lang="scss">
   @import "src/styles/all";
   .container {
+    display: block;
     position: relative;
-    display: inline-block;
+    width: 100%;
     font-family: var(--ts-simple-input-font-family, Arial, Helvetica, sans-serif);
   }
 
