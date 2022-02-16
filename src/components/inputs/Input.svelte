@@ -10,6 +10,7 @@
   export let step: string | number = 1;
   export let controlled: boolean | string = false;
   export let disabled: boolean | string = false;
+  export let border: boolean | string = false;
   export let min: string | number = "infinity";
   export let max: string | number = "infinity";
 
@@ -18,6 +19,7 @@
 
   $: controlledString = getBooleanFromString(controlled);
   $: disabledString = getBooleanFromString(disabled);
+  $: borderdString = getBooleanFromString(border);
   $: stepNumber = typeof step === "string" ? Number(step) : step;
 
   let component;
@@ -89,6 +91,7 @@
     class="text-shared input-shared"
     class:text-input={type === "text"}
     class:number-input={type === "number"}
+    class:border={borderdString}
     on:input={onInput}
   />
   {#if type === "number"}
@@ -153,19 +156,34 @@
     resize: none;
     background-color: var(--ts-simple-input-bg-color, rgba(54, 54, 86, 1));
     border-width: 0;
-    border-bottom: 1px solid var(--ts-simple-input-border-color, rgba(255, 152, 0, 1));
+    box-shadow: 0 -1px 0 0 var(--ts-simple-input-border-color, rgba(255, 152, 0, 1)) inset;
+
+    &.border {
+      box-shadow: 0 0 0 1px var(--ts-simple-input-border-color, rgba(255, 152, 0, 1)) inset;
+    }
 
     &:focus,
     &:active {
-      border-bottom: 1px solid var(--ts-simple-input-border-active-color, rgba(255, 0, 0, 1));
+      box-shadow: 0 -1px 0 0 var(--ts-simple-input-border-active-color, rgba(255, 0, 0, 1)) inset;
       outline: none;
+
+      &.border {
+        box-shadow: 0 0 0 1px var(--ts-simple-input-border-active-color, rgba(255, 0, 0, 1)) inset;
+      }
     }
 
     &:disabled {
       cursor: no-drop;
       color: var(--ts-simple-input-input-border-disabled-color, rgba(128, 128, 128, 1));
-      border-bottom: 1px solid
-        var(--ts-simple-input-input-border-disabled-border-color, rgba(169, 169, 169, 1));
+      box-shadow: 0 -1px 0 0 var(
+          --ts-simple-input-input-border-disabled-border-color,
+          rgba(169, 169, 169, 1)
+        ) inset;
+
+      &.border {
+        box-shadow: 0 0 0 1px
+          var(--ts-simple-input-input-border-disabled-border-color, rgba(169, 169, 169, 1)) inset;
+      }
     }
   }
 
@@ -205,8 +223,8 @@
     justify-content: center;
     position: absolute;
     background-color: var(--ts-simple-input-bg-color, rgba(54, 54, 86, 1));
-    right: 0;
-    top: 0;
+    right: 1px;
+    top: 1px;
     bottom: 1px;
     width: 36px;
   }

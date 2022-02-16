@@ -41,6 +41,16 @@
 />
 
 <Story
+  name="Border"
+  args={{
+    value: 10,
+    border: true,
+    type: "number",
+    suffix: "°C",
+  }}
+/>
+
+<Story
   name="No Min/Max"
   args={{
     value: 10,
