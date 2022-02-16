@@ -51,7 +51,9 @@
 
     const returnNumber = inputValue + stepNumber;
 
-    if (max && Number(max) !== NaN && returnNumber <= Number(max)) {
+    if (isNaN(Number(max))) {
+      onChange(returnNumber);
+    } else if (returnNumber <= Number(max)) {
       onChange(returnNumber);
     }
   };
@@ -61,7 +63,9 @@
 
     const returnNumber = inputValue - stepNumber;
 
-    if (min && Number(min) !== NaN && returnNumber >= Number(min)) {
+    if (isNaN(Number(min))) {
+      onChange(returnNumber);
+    } else if (returnNumber >= Number(min)) {
       onChange(returnNumber);
     }
   };

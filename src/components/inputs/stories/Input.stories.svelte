@@ -40,6 +40,15 @@
   }}
 />
 
+<Story
+  name="No Min/Max"
+  args={{
+    value: 10,
+    type: "number",
+    suffix: "°C",
+  }}
+/>
+
 <style lang="scss">
   @import "src/styles/all";
 
