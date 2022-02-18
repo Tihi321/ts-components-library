@@ -32,9 +32,11 @@
         </svg>
       </div>
     </div>
-    <div class="title">
-      <slot name="title" />
-    </div>
+    {#if $$slots.title}
+      <div class="title">
+        <slot name="title" />
+      </div>
+    {/if}
   </div>
   <div class="content" class:open={openString}>
     <slot />
