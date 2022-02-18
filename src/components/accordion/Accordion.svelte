@@ -10,7 +10,7 @@
   };
 </script>
 
-<div class="container">
+<div>
   <div class="header" on:click={onClick}>
     <div class="icon-container">
       <div class="icon" class:open={openString}>
@@ -44,13 +44,9 @@
 <style lang="scss">
   @import "src/styles/all";
 
-  .container {
-    overflow: hidden;
-    color: var(--ts-accordion-color, rgba(255, 255, 255, 1));
-  }
-
   .header {
-    padding: 16px;
+    padding: var(--ts-accordion-header-padding, 8px);
+    color: var(--ts-accordion-color, rgba(255, 255, 255, 1));
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -69,17 +65,16 @@
   }
 
   .content {
-    padding: 0 36px;
-    opacity: 0;
+    padding: var(--ts-accordion-content-padding, 0 8px);
     max-height: 0;
-    transition: all 0.3s ease;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0, 1.05, 0, 1);
     background-color: var(--ts-accordion-content-bg-color, rgba(35, 39, 57, 1));
-    color: var(--ts-accordion-content-primary-color, rgba(35, 39, 57, 1));
+    color: var(--ts-accordion-content-color, rgba(255, 255, 255, 1));
 
     &.open {
-      padding: 8px 36px;
-      max-height: 9999px;
-      opacity: 1;
+      max-height: 1000px;
+      overflow-y: auto;
     }
   }
 

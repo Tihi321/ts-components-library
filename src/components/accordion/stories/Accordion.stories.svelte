@@ -21,12 +21,13 @@
 <Template let:args>
   <div class="container">
     <Accordion {...args}>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam amet fuga obcaecati ex
-      expedita magni eius repudiandae perspiciatis? Numquam reprehenderit esse animi provident
-      dignissimos facilis iure rem, dolor commodi rerum.
       <span slot="title">
         {args.title}
       </span>
+
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam amet fuga obcaecati ex
+      expedita magni eius repudiandae perspiciatis? Numquam reprehenderit esse animi provident
+      dignissimos facilis iure rem, dolor commodi rerum.
     </Accordion>
   </div>
 </Template>
@@ -37,6 +38,7 @@
 <style lang="scss">
   .container {
     width: 100%;
-    color: #ffffff;
+    border: 1px solid white;
+    --ts-accordion-content-bg-color: green;
   }
 </style>
