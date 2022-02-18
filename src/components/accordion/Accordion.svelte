@@ -46,15 +46,15 @@
 
   .header {
     padding: var(--ts-accordion-header-padding, 8px);
-    color: var(--ts-accordion-color, rgba(255, 255, 255, 1));
+    color: var(--ts-accordion-header-color, rgba(255, 255, 255, 1));
+    background: var(
+      --ts-accordion-header-bg-color,
+      linear-gradient(135deg, rgba(37, 141, 200, 1) 0%, rgba(37, 141, 200, 1) 100%)
+    );
+    border-bottom: var(--ts-accordion-bottom-border, 1px solid rgba(35, 39, 57, 1));
     display: flex;
     align-items: center;
     cursor: pointer;
-    border-bottom: 2px solid var(--ts-accordion-border-color, rgba(35, 39, 57, 1));
-    background: var(
-      --ts-accordion-bg-glass-color,
-      linear-gradient(135deg, rgba(37, 141, 200, 1) 0%, rgba(37, 141, 200, 1) 100%)
-    );
   }
 
   .title {
