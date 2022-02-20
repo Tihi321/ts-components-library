@@ -2,7 +2,7 @@
 
 <script lang="ts">
   import { onDestroy, onMount, createEventDispatcher } from "svelte";
-  import { dispatchEvent, useAvoidElementCallback } from "tsl-utils";
+  import { dispatchEvent } from "tsl-utils";
   import type { TDropdownItems, TDropdownItem } from "../../types";
 
   const svelteDispatch = createEventDispatcher();
@@ -14,18 +14,11 @@
   $: itemsArray = typeof items === "string" ? JSON.parse(items) : items;
   $: selectedbject = typeof selected === "string" ? JSON.parse(selected) : selected;
 
-  const slotName = "dropdown-slot";
   let component;
 
-  const { onEventCallback } = useAvoidElementCallback({
-    datasetName: "dropdown",
-    slotName,
-    callback: () => {
-      if (open) {
-        open = false;
-      }
-    },
-  });
+  const onClose = () => {
+    open = false;
+  };
 
   const onOpen = () => {
     open = !open;
@@ -45,16 +38,16 @@
   };
 
   onMount(() => {
-    document.addEventListener("click", onEventCallback);
+    document.addEventListener("click", onClose);
   });
 
   onDestroy(() => {
-    document.removeEventListener("click", onEventCallback);
+    document.removeEventListener("click", onClose);
   });
 </script>
 
-<div class="container" class:open data-dropdown={slotName} bind:this={component}>
-  <div class="title" on:click={onOpen}>
+<div class="container" class:open bind:this={component} on:click|stopPropagation>
+  <div class="title" on:click|stopPropagation={onOpen}>
     <div class="selected">
       {#if selectedbject}
         {selectedbject.value}
@@ -82,7 +75,7 @@
   {#if open}
     <ul class="items">
       {#each itemsArray as item}
-        <li class="item" on:click={() => onChange(item)}>
+        <li class="item" on:click|stopPropagation={() => onChange(item)}>
           {item.value}
         </li>
       {/each}
