@@ -44,8 +44,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
-
   .header {
     padding: var(--ts-accordion-header-padding, 8px);
     color: var(--ts-accordion-header-color, rgba(255, 255, 255, 1));

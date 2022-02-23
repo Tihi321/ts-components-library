@@ -55,7 +55,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
   .container {
     display: inline-flex;
     align-items: center;

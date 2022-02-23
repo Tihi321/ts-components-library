@@ -1,6 +1,6 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Dropdown from "../Dropdown.svelte";
+  import Options from "../Options.svelte";
 
   const items = [
     {
@@ -22,14 +22,25 @@
 
 <!-- More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export -->
 <!-- More on argTypes: https://storybook.js.org/docs/svelte/api/argtypes -->
-<Meta title="Select/Dropdown" component={Dropdown} />
+<Meta
+  title="Select/Options"
+  component={Options}
+  argTypes={{
+    type: {
+      defaultValue: "row",
+      options: ["row", "column"],
+      control: { type: "radio" },
+    },
+  }}
+/>
 
 <!-- More on component templates: https://storybook.js.org/docs/svelte/writing-stories/introduction#using-args -->
 <Template let:args>
   <div class="container">
-    <Dropdown
+    <Options
       {selected}
       {items}
+      {...args}
       on:change={(item) => {
         selected = item.detail;
       }}

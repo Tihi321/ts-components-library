@@ -3,13 +3,13 @@
 <script lang="ts">
   import { onDestroy, onMount, createEventDispatcher } from "svelte";
   import { dispatchEvent } from "tsl-utils";
-  import type { TDropdownItems, TDropdownItem } from "../../types";
+  import type { TSelectedItems, TSelectedItem } from "../../types";
 
   const svelteDispatch = createEventDispatcher();
 
   export let open: boolean = false;
-  export let selected: TDropdownItem = undefined;
-  export let items: TDropdownItems = [];
+  export let selected: TSelectedItem = undefined;
+  export let items: TSelectedItems = [];
 
   $: itemsArray = typeof items === "string" ? JSON.parse(items) : items;
   $: selectedbject = typeof selected === "string" ? JSON.parse(selected) : selected;
@@ -24,7 +24,7 @@
     open = !open;
   };
 
-  const onChange = (item: TDropdownItem) => {
+  const onChange = (item: TSelectedItem) => {
     if (!selectedbject || selectedbject.id !== item.id) {
       svelteDispatch("change", item);
       dispatchEvent({
@@ -84,7 +84,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
   .container {
     position: relative;
     color: var(--ts-select-color, rgba(35, 39, 57, 1));
@@ -129,7 +128,8 @@
   }
 
   .items {
-    @extend %reset-list;
+    list-style: none;
+    padding-left: 0;
     position: absolute;
     margin: 4px 0 0 0;
     z-index: 1;

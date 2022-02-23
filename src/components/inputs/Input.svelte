@@ -135,7 +135,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
   .container {
     display: block;
     position: relative;

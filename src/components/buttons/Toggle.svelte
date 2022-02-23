@@ -34,7 +34,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
   .container {
     margin: 4px;
     cursor: pointer;

@@ -1,6 +1,6 @@
-export type TDropdownItem = {
+export type TSelectedItem = {
   id: string;
   value: string;
 };
 
-export type TDropdownItems = TDropdownItem[];
+export type TSelectedItems = TSelectedItem[];

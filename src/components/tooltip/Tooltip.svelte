@@ -98,8 +98,6 @@
 </div>
 
 <style lang="scss">
-  @import "src/styles/all";
-
   .tooltip-container {
     cursor: pointer;
     position: relative;

@@ -49,6 +49,19 @@
         <ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>
       </div>
     </div>
+  
+
+    <div class="element-wrapper">
+      <div class="select-container">
+        <ts-options class="options-columns" type="column" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-options>
+      </div>
+    </div>
+
+    <div class="element-wrapper">
+      <div class="select-container">
+        <ts-options class="options-row" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-options>
+      </div>
+    </div>
 
     <div class="element-wrapper">
       <ts-accordion open="true">
@@ -59,13 +72,27 @@
     <script>
       const toggleElement = document.querySelector(".toggle");
       toggleElement.addEventListener("change", value => {
-        console.log(value);
+        console.log("toggle", value);
       });
 
       const dropdownElement = document.querySelector(".dropdown");
       dropdownElement.addEventListener("change", value => {
-        console.log(value);
+        console.log("dropdown", value);
         dropdownElement.selected = value.detail;
+      });
+  
+
+      const optionsColumnElement = document.querySelector(".options-columns");
+      optionsColumnElement.addEventListener("change", value => {
+        console.log("options-columns", value);
+        optionsColumnElement.selected = value.detail;
+      });
+  
+
+      const optionsRowElement = document.querySelector(".options-row");
+      optionsRowElement.addEventListener("change", value => {
+        console.log("options-row", value);
+        optionsRowElement.selected = value.detail;
       });
   
     </script>
