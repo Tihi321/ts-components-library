@@ -75,6 +75,7 @@
     cursor: pointer;
     text-align: center;
     padding: var(--ts-options-padding, 5px 8px);
+    background-color: var(--ts-options-bg-color, rgba(255, 255, 255, 1));
     border-radius: var(--ts-options-border-radius, 5px);
     border-color: var(--ts-options-border-color, rgba(35, 39, 57, 1));
     border-width: var(--ts-options-border-width, 1px);
@@ -94,6 +95,10 @@
   .selected {
     color: var(--ts-options-active-color, rgba(255, 255, 255, 1));
     background-color: var(--ts-options-active-bg-color, rgba(35, 39, 57, 1));
-    border-color: var(--ts-options-active-bg-color, rgba(35, 39, 57, 1));
+    border-color: var(--ts-options-active-border-color, rgba(35, 39, 57, 1));
+
+    &:hover {
+      border-color: var(--ts-options-active-hover-border-color, rgba(35, 39, 57, 1));
+    }
   }
 </style>
