@@ -39,6 +39,5 @@
   .container {
     width: 100%;
     border: 1px solid white;
-    --ts-accordion-content-bg-color: green;
   }
 </style>

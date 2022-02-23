@@ -79,16 +79,18 @@
         >
           <svg
             class="arrow-icon"
-            width="12"
-            height="13"
-            view-box="0 0 12 13"
+            width="14"
+            height="7"
+            viewBox="0 0 14 7"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
               class="arrow-icon-path"
-              d="M5.99996 0.500001L1.04907e-06 12.5L12 12.5L5.99996 0.500001Z"
-              fill="#F7FAFD"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M14 7 7 0 0 7h14Z"
+              fill="#E7E9EA"
             />
           </svg>
         </div>
@@ -111,11 +113,10 @@
     left: initial;
     right: initial;
     bottom: initial;
-    background-color: var(--ts-tooltip-bg-color, rgba(255, 255, 255, 1));
+    background-color: var(--ts-tooltip-bg-color, rgba(231, 233, 234, 1));
     color: var(--ts-tooltip-color, rgba(35, 39, 57, 1));
-    filter: drop-shadow(0 0 2px var(--ts-tooltip-filter-color, rgba(192, 192, 192, 1)));
     border-radius: 3px;
-    opacity: 0.9;
+    opacity: var(--ts-tooltip-opacity, 1);
     font-size: 12px;
     line-height: 16px;
     font-weight: 400;
@@ -170,25 +171,25 @@
     position: absolute;
 
     &.right {
-      bottom: calc(50% - 2px);
-      left: -10px;
-      transform: rotate(150deg) translate(0%, -50%);
+      bottom: calc(50% - 8px);
+      left: -3px;
+      transform: rotate(-90deg) translate(0%, -50%);
     }
 
     &.left {
-      bottom: calc(50% - 2px);
-      right: -10px;
-      transform: rotate(210deg) translate(0%, -50%);
+      bottom: calc(50% - 8px);
+      right: -3px;
+      transform: rotate(90deg) translate(0%, -50%);
     }
 
     &.bottom {
-      top: -10px;
+      top: -12px;
       left: 50%;
       transform: rotate(0) translate(-50%, 0);
     }
 
     &.top {
-      bottom: -10px;
+      bottom: -12px;
       left: 50%;
       transform: rotate(180deg) translate(50%, 0);
     }
@@ -198,7 +199,7 @@
       height: 100%;
     }
     .arrow-icon-path {
-      fill: var(--ts-tooltip-bg-color, rgba(255, 255, 255, 1));
+      fill: var(--ts-tooltip-bg-color, rgba(231, 233, 234, 1));
     }
   }
 </style>

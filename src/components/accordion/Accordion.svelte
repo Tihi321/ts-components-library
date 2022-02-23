@@ -46,12 +46,18 @@
 <style lang="scss">
   .header {
     padding: var(--ts-accordion-header-padding, 8px);
-    color: var(--ts-accordion-header-color, rgba(255, 255, 255, 1));
-    background: var(
+    color: var(--ts-accordion-header-color, var(--ts-accordion-color, rgba(255, 255, 255, 1)));
+    background-color: var(
       --ts-accordion-header-bg-color,
-      linear-gradient(135deg, rgba(37, 141, 200, 1) 0%, rgba(37, 141, 200, 1) 100%)
+      var(--ts-accordion-bg-color, rgba(37, 141, 200, 1))
     );
-    border-bottom: var(--ts-accordion-bottom-border, 1px solid rgba(35, 39, 57, 1));
+    border-color: var(
+      --ts-accordion-border-color,
+      var(--ts-accordion-color, rgba(255, 255, 255, 1))
+    );
+    border-style: var(--ts-accordion-border-style, solid);
+    border-width: var(--ts-accordion-border-width, 0);
+    border-bottom-width: var(--ts-accordion-border-bottom-width, 1px);
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -69,8 +75,11 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0, 1.05, 0, 1);
-    background-color: var(--ts-accordion-content-bg-color, rgba(35, 39, 57, 1));
-    color: var(--ts-accordion-content-color, rgba(255, 255, 255, 1));
+    background-color: var(
+      --ts-accordion-content-bg-color,
+      var(--ts-accordion-color, rgba(255, 255, 255, 1))
+    );
+    color: var(--ts-accordion-content-color, var(--ts-accordion-bg-color, rgba(37, 141, 200, 1)));
 
     &.open {
       max-height: 1000px;
@@ -91,7 +100,7 @@
     }
 
     .arrow-icon-path {
-      fill: var(--ts-accordion-icon-color, rgba(255, 255, 255, 1));
+      fill: var(--ts-accordion-icon-color, var(--ts-accordion-color, rgba(255, 255, 255, 1)));
     }
   }
 </style>

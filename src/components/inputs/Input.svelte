@@ -155,10 +155,18 @@
     resize: none;
     background-color: var(--ts-simple-input-bg-color, rgba(54, 54, 86, 1));
     border-width: 0;
-    box-shadow: 0 -1px 0 0 var(--ts-simple-input-border-color, rgba(255, 152, 0, 1)) inset;
+    box-shadow: 0 -1px 0 0 var(
+        --ts-simple-input-border-color,
+        var(--ts-simple-input-secondary-color, rgba(255, 152, 0, 1))
+      ) inset;
 
     &.border {
-      box-shadow: 0 0 0 1px var(--ts-simple-input-border-color, rgba(255, 152, 0, 1)) inset;
+      box-shadow: 0 0 0 1px
+        var(
+          --ts-simple-input-border-color,
+          var(--ts-simple-input-secondary-color, rgba(255, 152, 0, 1))
+        )
+        inset;
     }
 
     &:focus,
@@ -257,6 +265,9 @@
   }
 
   .arrow-icon-path {
-    fill: var(--ts-simple-input-arrow-color, rgba(255, 152, 0, 1));
+    fill: var(
+      --ts-simple-input-arrow-color,
+      var(--ts-simple-input-secondary-color, rgba(255, 152, 0, 1))
+    );
   }
 </style>

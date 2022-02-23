@@ -76,8 +76,7 @@
     width: 0;
 
     &:checked ~ .checkmark {
-      background-color: var(--ts-checkbox-checked-color, rgba(255, 152, 0, 1));
-      border-color: var(--ts-checkbox-checked-border-color, rgba(233, 233, 233, 1));
+      background-color: var(--ts-checkbox-checked-bg-color, rgba(255, 152, 0, 1));
 
       &:after {
         filter: blur(0);
@@ -89,8 +88,10 @@
     position: relative;
     height: 14px;
     width: 14px;
-    background-color: var(--ts-checkbox-checkmark-color, rgba(233, 233, 233, 1));
-    border: 2px solid var(--ts-checkbox-checkmark-border-color, rgba(35, 39, 57, 1));
+    background-color: var(--ts-checkbox-bg-color, var(--ts-checkbox-color, rgba(255, 255, 255, 1)));
+    border-color: var(--ts-checkbox-border-color, rgba(35, 39, 57, 1));
+    border-width: var(--ts-checkbox-border-width, 2px);
+    border-style: var(--ts-checkbox-border-style, solid);
     transition: all 0.2s ease;
 
     &:after {
@@ -101,7 +102,11 @@
       top: 1px;
       width: 4px;
       height: 8px;
-      border: solid var(--ts-checkbox-check-color, rgba(255, 255, 255, 1));
+      border-style: solid;
+      border-color: var(
+        --ts-checkbox-checked-color,
+        var(--ts-checkbox-color, rgba(255, 255, 255, 1))
+      );
       border-width: 0 1px 1px 0;
       transform: rotate(45deg);
       transition: filter 0.2s ease;
