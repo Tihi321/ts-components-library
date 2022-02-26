@@ -44,7 +44,7 @@
     height: 22px;
   }
   .toggle-button {
-    background-color: var(--ts-toggle-color, rgba(3, 169, 244, 1));
+    background-color: var(--ts-toggle-color, rgba(255, 152, 0, 1));
     position: relative;
     width: 18px;
     height: 18px;
@@ -53,13 +53,13 @@
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 
     &.toggled {
-      background-color: var(--ts-toggle-on-color, rgba(35, 39, 57, 1));
+      background-color: var(--ts-toggle-on-color, rgba(54, 54, 86, 1));
       transform: translate(20px);
     }
   }
 
   .toggle-line {
-    background-color: var(--ts-toggle-color, rgba(3, 169, 244, 1));
+    background-color: var(--ts-toggle-color, rgba(255, 152, 0, 1));
     transition: background-color 0.2s ease-in-out;
     height: 6px;
     border-radius: 3px;

@@ -69,23 +69,23 @@
 
   .option {
     flex: 1;
-    color: var(--ts-options-color, rgba(35, 39, 57, 1));
-    transition: 0.2s color ease;
+    color: var(--ts-options-color, rgba(54, 54, 86, 1));
+    transition: 0.2s all ease;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
     padding: var(--ts-options-padding, 5px 8px);
     background-color: var(--ts-options-bg-color, rgba(255, 255, 255, 1));
-    border-radius: var(--ts-options-border-radius, 5px);
-    border-color: var(--ts-options-border-color, var(--ts-options-color, rgba(35, 39, 57, 1)));
+    border-radius: var(--ts-options-border-radius, 2px);
+    border-color: var(--ts-options-border-color, var(--ts-options-color, rgba(54, 54, 86, 1)));
     border-width: var(--ts-options-border-width, 1px);
     border-style: var(--ts-options-border-style, solid);
 
     &:hover {
-      color: var(--ts-options-hover-color, rgba(3, 169, 244, 1));
+      color: var(--ts-options-hover-color, rgba(255, 152, 0, 1));
       border-color: var(
         --ts-options-border-hover-color,
-        var(--ts-options-hover-color, rgba(3, 169, 244, 1))
+        var(--ts-options-hover-color, rgba(255, 152, 0, 1))
       );
     }
 
@@ -99,17 +99,17 @@
     color: var(--ts-options-active-color, var(--ts-options-bg-color, rgba(255, 255, 255, 1)));
     background-color: var(
       --ts-options-active-bg-color,
-      var(--ts-options-color, rgba(35, 39, 57, 1))
+      var(--ts-options-color, rgba(54, 54, 86, 1))
     );
     border-color: var(
       --ts-options-active-border-color,
-      var(--ts-options-color, rgba(35, 39, 57, 1))
+      var(--ts-options-color, rgba(54, 54, 86, 1))
     );
 
     &:hover {
       border-color: var(
         --ts-options-active-hover-border-color,
-        var(--ts-options-color, rgba(35, 39, 57, 1))
+        var(--ts-options-color, rgba(255, 152, 0, 1))
       );
     }
   }

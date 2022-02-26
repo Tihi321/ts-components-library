@@ -49,12 +49,9 @@
     color: var(--ts-accordion-header-color, var(--ts-accordion-color, rgba(255, 255, 255, 1)));
     background-color: var(
       --ts-accordion-header-bg-color,
-      var(--ts-accordion-bg-color, rgba(37, 141, 200, 1))
+      var(--ts-accordion-bg-color, rgba(54, 54, 86, 1))
     );
-    border-color: var(
-      --ts-accordion-border-color,
-      var(--ts-accordion-color, rgba(255, 255, 255, 1))
-    );
+    border-color: var(--ts-accordion-border-color, var(--ts-accordion-color, rgba(255, 152, 0, 1)));
     border-style: var(--ts-accordion-border-style, solid);
     border-width: var(--ts-accordion-border-width, 0);
     border-bottom-width: var(--ts-accordion-border-bottom-width, 1px);
@@ -66,7 +63,6 @@
   .title {
     font-size: 18px;
     font-style: normal;
-    font-weight: 600;
     line-height: 24px;
   }
 
@@ -79,7 +75,7 @@
       --ts-accordion-content-bg-color,
       var(--ts-accordion-color, rgba(255, 255, 255, 1))
     );
-    color: var(--ts-accordion-content-color, var(--ts-accordion-bg-color, rgba(37, 141, 200, 1)));
+    color: var(--ts-accordion-content-color, var(--ts-accordion-bg-color, rgba(54, 54, 86, 1)));
 
     &.open {
       max-height: 1000px;
@@ -100,7 +96,7 @@
     }
 
     .arrow-icon-path {
-      fill: var(--ts-accordion-icon-color, var(--ts-accordion-color, rgba(255, 255, 255, 1)));
+      fill: var(--ts-accordion-icon-color, var(--ts-accordion-color, rgba(255, 152, 0, 1)));
     }
   }
 </style>

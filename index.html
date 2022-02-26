@@ -3,9 +3,14 @@
   <head>
     <script src="/cdn/index.js"></script>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
       :root {
         --ts-accordion-content-bg-color: white;
         --ts-accordion-content-color: rgba(35, 39, 57, 1);
+      }
+
+      body {
+        font-family: 'Roboto', sans-serif;
       }
 
       .element-wrapper {
@@ -50,6 +55,11 @@
       </div>
     </div>
   
+    <div class="element-wrapper">
+      <div class="select-container">
+        <ts-dropdown-search class="dropdown-search" highlight="Category/" items='[{"id":"1","value":"Category/test"},{"id":"2","value":"Category/test2"},{"id":"3","value":"Category/test3"}]'></ts-dropdown-search>
+      </div>
+    </div>
 
     <div class="element-wrapper">
       <div class="select-container">
@@ -79,6 +89,13 @@
       dropdownElement.addEventListener("change", value => {
         console.log("dropdown", value);
         dropdownElement.selected = value.detail;
+      });
+  
+
+      const dropdownSearchElement = document.querySelector(".dropdown-search");
+      dropdownSearchElement.addEventListener("change", value => {
+        console.log("dropdown-search", value);
+        dropdownSearchElement.selected = value.detail;
       });
   
 

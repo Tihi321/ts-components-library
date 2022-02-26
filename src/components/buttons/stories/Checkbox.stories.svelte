@@ -8,7 +8,7 @@
 <!-- More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export -->
 <!-- More on argTypes: https://storybook.js.org/docs/svelte/api/argtypes -->
 <Meta
-  title="Buttons/Checkbox"
+  title="Components/Buttons/Checkbox"
   component={Checkbox}
   argTypes={{
     checked: { defaultValue: false, control: "boolean" },

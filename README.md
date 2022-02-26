@@ -47,17 +47,22 @@ or use it directly within script tag, atributes can be passed from html as strin
     _Element_<br/>
     **`<ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>`**
 
-5.  **Options** - Options
+5.  **DropdownSearch** - DropdownSearch
+
+    _Element_<br/>
+    **`<ts-dropdown-search class="dropdown-search" highlight="Category/" items='[{"id":"1","value":"Category/test"},{"id":"2","value":"Category/test2"},{"id":"3","value":"Category/test3"}]'></ts-dropdown-search>`**
+
+6.  **Options** - Options
 
     _Element_<br/>
     **`<ts-options class="options" type="column|row" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-options>`**
 
-6.  **Tooltip** - Custom tooltip
+7.  **Tooltip** - Custom tooltip
 
     _Element_<br/>
     **`<ts-tooltip class="tooltip" trigger="Hover" placement="Top"><slot slot="tooltip">Tooltip content</slot>Content</ts-tooltip>`**
 
-7.  **Input** - Custom input wit posibility to style arrow buttons with number input and adding suffix
+8.  **Input** - Custom input wit posibility to style arrow buttons with number input and adding suffix
 
     _Element_<br/>
     **`<ts-input value="10" type="number" suffix="&#8451;" ></ts-input>`**

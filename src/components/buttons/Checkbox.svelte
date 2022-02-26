@@ -89,7 +89,7 @@
     height: 14px;
     width: 14px;
     background-color: var(--ts-checkbox-bg-color, var(--ts-checkbox-color, rgba(255, 255, 255, 1)));
-    border-color: var(--ts-checkbox-border-color, rgba(35, 39, 57, 1));
+    border-color: var(--ts-checkbox-border-color, rgba(54, 54, 86, 1));
     border-width: var(--ts-checkbox-border-width, 2px);
     border-style: var(--ts-checkbox-border-style, solid);
     transition: all 0.2s ease;

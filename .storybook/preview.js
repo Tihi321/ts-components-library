@@ -7,7 +7,7 @@ export const parameters = {
     values: [
       {
         name: 'dark',
-        value: 'rgba(35, 39, 57, 1)',
+        value: 'rgba(96, 125, 139, 1)',
       },
       {
         name: 'light',

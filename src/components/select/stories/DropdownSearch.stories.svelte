@@ -1,34 +1,46 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
-  import Accordion from "../Accordion.svelte";
+  import DropdownSearch from "../DropdownSearch.svelte";
+
+  const items = [
+    {
+      id: "1",
+      value: "Category/Test1",
+    },
+    {
+      id: "2",
+      value: "Category/Test2",
+    },
+    {
+      id: "3",
+      value: "Category/Test3",
+    },
+  ];
+
+  let selected = undefined;
 </script>
 
 <!-- More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export -->
 <!-- More on argTypes: https://storybook.js.org/docs/svelte/api/argtypes -->
 <Meta
-  title="Components/Common/Accordion"
-  component={Accordion}
+  title="Components/Select/DropdownSearch"
+  component={DropdownSearch}
   argTypes={{
-    open: { defaultValue: false, control: "boolean" },
-    title: {
-      defaultValue: "This is Title",
-      control: { type: "text" },
-    },
+    highlight: { defaultValue: "Category/", control: "text" },
   }}
 />
 
 <!-- More on component templates: https://storybook.js.org/docs/svelte/writing-stories/introduction#using-args -->
 <Template let:args>
   <div class="container">
-    <Accordion {...args}>
-      <span slot="title">
-        {args.title}
-      </span>
-
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam amet fuga obcaecati ex
-      expedita magni eius repudiandae perspiciatis? Numquam reprehenderit esse animi provident
-      dignissimos facilis iure rem, dolor commodi rerum.
-    </Accordion>
+    <DropdownSearch
+      {selected}
+      {items}
+      highlight={args.highlight}
+      on:change={(item) => {
+        selected = item.detail;
+      }}
+    />
   </div>
 </Template>
 
@@ -36,7 +48,9 @@
 <Story name="Default" />
 
 <style lang="scss">
+  @import "src/styles/all";
+
   .container {
-    width: 100%;
+    margin: 10px;
   }
 </style>
