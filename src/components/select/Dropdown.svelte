@@ -14,7 +14,19 @@
   $: itemsArray = typeof items === "string" ? JSON.parse(items) : items;
   $: selectedbject = typeof selected === "string" ? JSON.parse(selected) : selected;
 
-  let component;
+  let containerComponent;
+
+  $: {
+    if (open && selected) {
+      const scrollToElement = containerComponent.querySelector(
+        `#dropdown-item-id-${CSS.escape(selected.id)}`
+      ) as Element;
+      scrollToElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
 
   const onClose = () => {
     open = false;
@@ -30,7 +42,7 @@
       dispatchEvent({
         name: "change",
         params: item,
-        element: component,
+        element: containerComponent,
       });
     }
 
@@ -46,7 +58,7 @@
   });
 </script>
 
-<div class="container" class:open bind:this={component} on:click|stopPropagation>
+<div class="container" class:open bind:this={containerComponent} on:click|stopPropagation>
   <div class="title" on:click|stopPropagation={onOpen}>
     {#if selectedbject}
       {selectedbject.value}
@@ -70,15 +82,18 @@
       </svg>
     </div>
   </div>
-  {#if open}
-    <ul class="items">
-      {#each itemsArray as item}
-        <li class="item" on:click|stopPropagation={() => onChange(item)}>
-          {item.value}
-        </li>
-      {/each}
-    </ul>
-  {/if}
+  <ul class="items" class:open>
+    {#each itemsArray as item}
+      <li
+        class="item"
+        on:click|stopPropagation={() => onChange(item)}
+        id={`dropdown-item-id-${item.id}`}
+        class:selected={selected && selected.id === item.id}
+      >
+        {item.value}
+      </li>
+    {/each}
+  </ul>
 </div>
 
 <style lang="scss">
@@ -140,6 +155,16 @@
     border-radius: inherit;
     border-bottom: 1px solid
       var(--ts-select-border-color, var(--ts-select-color, rgba(255, 152, 0, 1)));
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   .item {
@@ -149,7 +174,8 @@
     padding: 10px 20px;
     text-align: left;
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: var(--ts-select-hover-color, rgba(3, 169, 244, 1));
     }
   }

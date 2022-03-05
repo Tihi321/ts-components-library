@@ -1,21 +1,14 @@
 <script>
   import { Meta, Template, Story } from "@storybook/addon-svelte-csf";
   import DropdownSearch from "../DropdownSearch.svelte";
+  import range from "lodash/range";
+  import map from "lodash/map";
 
-  const items = [
-    {
-      id: "1",
-      value: "Category/Test1",
-    },
-    {
-      id: "2",
-      value: "Category/Test2",
-    },
-    {
-      id: "3",
-      value: "Category/Test3",
-    },
-  ];
+  const items = map(range(20), (index) => ({
+    id: `C${index}`,
+    value: `Category/Test${index}`,
+    highlight: "Category/",
+  }));
 
   let selected = undefined;
 </script>

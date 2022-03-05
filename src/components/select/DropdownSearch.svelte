@@ -4,6 +4,7 @@
   import { onDestroy, onMount, createEventDispatcher } from "svelte";
   import isEmpty from "lodash/isEmpty";
   import filter from "lodash/filter";
+  import replace from "lodash/replace";
   import includes from "lodash/includes";
   import lowerCase from "lodash/lowerCase";
   import { dispatchEvent } from "tsl-utils";
@@ -12,22 +13,59 @@
   const svelteDispatch = createEventDispatcher();
 
   export let open: boolean = false;
-  export let highlight: string = undefined;
+  export let highlight: string = "";
   export let selected: TSelectedItem = undefined;
   export let items: TSelectedItems = [];
 
   let search: string = "";
-  $: useHighlight = !isEmpty(highlight);
+  let enabledSearch: boolean = false;
+
+  $: searchWithoutHighlight = selected ? replace(selected.value, highlight, "") : selected;
 
   $: itemsArray = typeof items === "string" ? JSON.parse(items) : items;
   $: selectedbject = typeof selected === "string" ? JSON.parse(selected) : selected;
 
   $: filteredItems = filter(
     itemsArray,
-    (item) => isEmpty(search) || includes(lowerCase(item.value as string), lowerCase(search))
+    (item) =>
+      !enabledSearch ||
+      isEmpty(search) ||
+      includes(lowerCase(item.value as string), lowerCase(search))
   );
 
-  let component;
+  let containerComponent;
+  let inputComponent;
+
+  $: {
+    if (!open) {
+      enabledSearch = false;
+    }
+  }
+
+  $: {
+    if (open) {
+      inputComponent.select();
+    }
+  }
+
+  $: {
+    if (open && selected) {
+      const scrollToElement = containerComponent.querySelector(
+        `#dropdown-item-id-${CSS.escape(selected.id)}`
+      ) as Element;
+      scrollToElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
+
+  const onInput = (event) => {
+    if (!enabledSearch) {
+      enabledSearch = true;
+    }
+    search = event.target.value;
+  };
 
   const onClose = () => {
     open = false;
@@ -52,7 +90,7 @@
       dispatchEvent({
         name: "change",
         params: item,
-        element: component,
+        element: containerComponent,
       });
     }
 
@@ -69,12 +107,20 @@
   });
 </script>
 
-<div class="container" bind:this={component} on:click|stopPropagation>
+<div class="container" bind:this={containerComponent} on:click|stopPropagation>
   <div class="title" on:click|stopPropagation={onOpen}>
-    {#if useHighlight && !open}
-      <div class="highlight text-shared">{highlight}</div>
-    {/if}
-    <input type="text" class:open class="search text-shared" bind:value={search} />
+    <div class="highlight text-shared" class:close={!open}>
+      <div class="highlight-text">{highlight || ""}</div>
+      <div class="search-text">{searchWithoutHighlight || ""}</div>
+    </div>
+    <input
+      type="text"
+      class:open
+      class="search text-shared"
+      value={search}
+      on:input={onInput}
+      bind:this={inputComponent}
+    />
     <div class="arrow" class:open>
       <svg
         class="arrow-icon"
@@ -92,21 +138,27 @@
       </svg>
     </div>
   </div>
-  {#if open}
-    <ul class="items">
-      {#each filteredItems as item}
-        <li class="item" on:click|stopPropagation={() => onChange(item)}>
-          {item.value}
-        </li>
-      {/each}
-    </ul>
-  {/if}
+  <ul class="items" class:open>
+    {#each filteredItems as item}
+      <li
+        class="item"
+        on:click|stopPropagation={() => onChange(item)}
+        id={`dropdown-item-id-${item.id}`}
+        class:selected={selected && selected.id === item.id}
+      >
+        <div class="highlight-text">{item.highlight || ""}</div>
+        <div class="search-text">
+          {item.highlight ? replace(item.value, item.highlight, "") : ""}
+        </div>
+      </li>
+    {/each}
+  </ul>
 </div>
 
 <style lang="scss">
   .container {
+    font-family: var(--ts-dropdown-search-font-family, Arial, Helvetica, sans-serif);
     position: relative;
-    color: var(--ts-select-color, rgba(255, 255, 255, 1));
     background-color: var(--ts-select-bg-color, rgba(54, 54, 86, 1));
   }
 
@@ -118,22 +170,30 @@
   .text-shared {
     font-size: var(---ts-select-input-font-size, 14px);
     line-height: var(--ts-select-input-line-height, 18px);
-    color: var(--ts-select-input-color, rgba(255, 255, 255, 1));
     box-sizing: border-box;
   }
 
   .highlight {
-    padding: 10px 0 10px 16px;
+    padding: {
+      top: 9px;
+      left: 16px;
+      right: 16px;
+      bottom: 11px;
+    }
     z-index: 1;
     pointer-events: none;
     position: absolute;
-    color: transparent;
-    background-color: rgba(162, 167, 172, 1);
-    mix-blend-mode: darken;
+    right: 0;
     top: 0;
     left: 0;
-    bottom: 1px;
+    bottom: 0;
     overflow: hidden;
+    display: flex;
+    opacity: 0;
+
+    &.close {
+      opacity: 1;
+    }
   }
 
   .search {
@@ -144,16 +204,25 @@
     border-width: 0;
     background-color: transparent;
     width: 100%;
-    border-bottom: 1px solid var(--ts-select-border-color, rgba(255, 152, 0, 1));
+    box-shadow: inset 0 -1px 0 0 var(--ts-select-border-color, rgba(255, 152, 0, 1));
+    color: transparent;
 
     &.open {
-      border-bottom: 1px solid var(--ts-select-border-open-color, rgba(255, 0, 0, 1));
+      color: var(--ts-select-input-color, rgba(255, 255, 255, 1));
+      box-shadow: inset 0 -1px 0 0 var(--ts-select-border-open-color, rgba(255, 0, 0, 1));
     }
 
     &:focus,
     &:active {
       outline: none;
     }
+  }
+
+  .highlight-text {
+    color: var(--ts-highlight-select-color, rgba(162, 167, 172, 1));
+  }
+  .search-text {
+    color: var(--ts-select-color, rgba(255, 255, 255, 1));
   }
 
   .arrow {
@@ -195,6 +264,15 @@
     border-radius: inherit;
     border-bottom: 1px solid
       var(--ts-select-border-color, var(--ts-select-color, rgba(255, 152, 0, 1)));
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   .item {
@@ -203,8 +281,10 @@
     cursor: pointer;
     padding: 10px 20px;
     text-align: left;
+    display: flex;
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: var(--ts-select-hover-color, rgba(3, 169, 244, 1));
     }
   }
