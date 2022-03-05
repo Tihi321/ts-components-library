@@ -45,12 +45,12 @@ or use it directly within script tag, atributes can be passed from html as strin
 4.  **Dropdown** - Dropdown
 
     _Element_<br/>
-    **`<ts-dropdown class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>`**
+    **`<ts-dropdown scroll class="dropdown" items='[{"id":"1","value":"test"},{"id":"2","value":"test3"}]'></ts-dropdown>`**
 
 5.  **DropdownSearch** - DropdownSearch
 
     _Element_<br/>
-    **`<ts-dropdown-search class="dropdown-search" highlight="Category/" items='[{"id":"1","value":"Category/test"},{"id":"2","value":"Category/test2"},{"id":"3","value":"Category/test3"}]'></ts-dropdown-search>`**
+    **`<ts-dropdown-search scroll class="dropdown-search" highlight="Category/" items='[{"id":"1","value":"Category/test","highlight":"Category/"},{"id":"2","value":"Category/test2","highlight":"Category/"},{"id":"3","value":"Category/test3","highlight":"Category/"}]'></ts-dropdown-search>`**
 
 6.  **Options** - Options
 

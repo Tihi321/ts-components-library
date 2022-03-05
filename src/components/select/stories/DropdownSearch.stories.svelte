@@ -19,6 +19,10 @@
   title="Components/Select/DropdownSearch"
   component={DropdownSearch}
   argTypes={{
+    scroll: {
+      defaultValue: true,
+      control: { type: "boolean" },
+    },
     highlight: { defaultValue: "Category/", control: "text" },
   }}
 />
@@ -30,6 +34,7 @@
       {selected}
       {items}
       highlight={args.highlight}
+      scroll={args.scroll}
       on:change={(item) => {
         selected = item.detail;
       }}

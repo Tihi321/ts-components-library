@@ -8,6 +8,7 @@
   const svelteDispatch = createEventDispatcher();
 
   export let open: boolean = false;
+  export let scroll: boolean = false;
   export let selected: TSelectedItem = undefined;
   export let items: TSelectedItems = [];
 
@@ -17,7 +18,7 @@
   let containerComponent;
 
   $: {
-    if (open && selected) {
+    if (open && selected && scroll) {
       const scrollToElement = containerComponent.querySelector(
         `#dropdown-item-id-${CSS.escape(selected.id)}`
       ) as Element;

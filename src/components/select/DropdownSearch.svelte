@@ -14,6 +14,7 @@
 
   export let open: boolean = false;
   export let highlight: string = "";
+  export let scroll: boolean = false;
   export let selected: TSelectedItem = undefined;
   export let items: TSelectedItems = [];
 
@@ -49,7 +50,7 @@
   }
 
   $: {
-    if (open && selected) {
+    if (open && selected && scroll) {
       const scrollToElement = containerComponent.querySelector(
         `#dropdown-item-id-${CSS.escape(selected.id)}`
       ) as Element;

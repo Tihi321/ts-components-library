@@ -14,7 +14,16 @@
 
 <!-- More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export -->
 <!-- More on argTypes: https://storybook.js.org/docs/svelte/api/argtypes -->
-<Meta title="Components/Select/Dropdown" component={Dropdown} />
+<Meta
+  title="Components/Select/Dropdown"
+  component={Dropdown}
+  argTypes={{
+    scroll: {
+      defaultValue: true,
+      control: { type: "boolean" },
+    },
+  }}
+/>
 
 <!-- More on component templates: https://storybook.js.org/docs/svelte/writing-stories/introduction#using-args -->
 <Template let:args>
@@ -22,6 +31,7 @@
     <Dropdown
       {selected}
       {items}
+      scroll={args.scroll}
       on:change={(item) => {
         selected = item.detail;
       }}
